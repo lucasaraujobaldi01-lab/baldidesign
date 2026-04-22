@@ -130,7 +130,13 @@ footer p{color:#444;font-size:.8rem}
 
 <!-- NAV -->
 <nav>
-  <div class="logo">BALDI<span>.</span></div>
+  <a class="logo" href="index.html" style="text-decoration:none">BALDI<span>.</span></a>
+  <div class="nav-links" style="display:flex;gap:32px;align-items:center">
+    <a href="index.html" style="color:var(--y);font-size:.85rem;text-decoration:none;letter-spacing:.5px">Início</a>
+    <a href="#servicos" style="color:#888;font-size:.85rem;text-decoration:none;letter-spacing:.5px;transition:.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Serviços</a>
+    <a href="#portfolio" style="color:#888;font-size:.85rem;text-decoration:none;letter-spacing:.5px;transition:.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Portfólio</a>
+    <a href="contato.html" style="color:#888;font-size:.85rem;text-decoration:none;letter-spacing:.5px;transition:.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Contato</a>
+  </div>
   <a class="nav-btn" href="https://wa.me/5518999999999" target="_blank">Falar no WhatsApp</a>
 </nav>
 
@@ -165,7 +171,7 @@ footer p{color:#444;font-size:.8rem}
 </div>
 
 <!-- SERVICES -->
-<section class="section" id="servicos">
+<section class="section" id="servicos" style="scroll-margin-top:80px">
   <div class="sec-label">O que fazemos</div>
   <h2 class="sec-title">Serviços que<br/>elevam sua marca</h2>
   <p class="sec-sub">Soluções criativas e estratégicas para posicionar sua marca onde ela merece estar.</p>
@@ -222,7 +228,7 @@ footer p{color:#444;font-size:.8rem}
 </section>
 
 <!-- PORTFOLIO -->
-<section class="section" id="portfolio">
+<section class="section" id="portfolio" style="scroll-margin-top:80px">
   <div class="sec-label">Portfólio</div>
   <h2 class="sec-title">Alguns projetos</h2>
   <p class="sec-sub">Uma amostra do que já criamos. Cada projeto conta uma história.</p>
