@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Baldi Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--y:#F5C518;--y2:#e6a800;--b:#0d0d0d;--g:#1a1a1a}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--b);color:#fff;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:99;display:flex;justify-content:space-between;align-items:center;padding:18px 8%;background:rgba(13,13,13,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(245,197,24,.08)}
+.logo{font-size:1.3rem;font-weight:900;letter-spacing:3px;color:#fff}.logo span{color:var(--y)}
+.nav-btn{background:var(--y);color:#111;font-weight:700;padding:11px 26px;border:none;cursor:pointer;font-size:.85rem;letter-spacing:1px;border-radius:50px;transition:.3s;text-decoration:none;display:inline-block}
+.nav-btn:hover{background:#fff;color:#111;box-shadow:0 0 24px rgba(245,197,24,.5);transform:translateY(-2px)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 8%;padding-top:90px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1600&q=80') center/cover no-repeat;opacity:.18;z-index:0}
+.hero-grad{position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 80% 40%, rgba(245,197,24,.22) 0%, transparent 70%), linear-gradient(135deg,rgba(13,13,13,1) 40%,rgba(245,197,24,.07) 100%);z-index:1}
+.hero-content{position:relative;z-index:2}
+.hero-tag{font-size:.72rem;letter-spacing:4px;color:var(--y);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.hero-tag::before{content:'';width:30px;height:2px;background:var(--y)}
+.hero h1{font-size:clamp(3rem,7vw,5.5rem);font-weight:900;line-height:1.0;margin-bottom:28px;text-shadow:0 4px 40px rgba(0,0,0,.5)}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--y),#fff 60%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1.05rem;color:#aaa;max-width:460px;line-height:1.75;margin-bottom:44px}
+.cta-group{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--y),var(--y2));color:#111;font-weight:700;padding:16px 36px;font-size:.95rem;cursor:pointer;border:none;letter-spacing:.5px;border-radius:50px;transition:.35s;text-decoration:none;box-shadow:0 4px 24px rgba(245,197,24,.25)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 36px rgba(245,197,24,.5);background:linear-gradient(135deg,#ffe066,var(--y))}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(255,255,255,.2);color:#fff;font-weight:600;padding:16px 36px;font-size:.95rem;cursor:pointer;background:rgba(255,255,255,.04);letter-spacing:.5px;border-radius:50px;transition:.35s;text-decoration:none;backdrop-filter:blur(6px)}
+.btn-outline:hover{border-color:var(--y);color:var(--y);background:rgba(245,197,24,.07);transform:translateY(-3px)}
+.stats{display:flex;gap:52px;margin-top:72px;flex-wrap:wrap;position:relative;z-index:2}
+.stat h2{font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,var(--y),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat p{font-size:.75rem;color:#666;letter-spacing:2px;margin-top:4px;text-transform:uppercase}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:#555;font-size:.7rem;letter-spacing:2px}
+.hero-scroll span{width:1px;height:40px;background:linear-gradient(to bottom,var(--y),transparent);animation:scrollAnim 1.5s infinite}
+@keyframes scrollAnim{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1}100%{opacity:0;transform:scaleY(1);transform-origin:top}}
+
+/* CLIENTS BAR */
+.clients{padding:28px 8%;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;display:flex;align-items:center;gap:48px;overflow:hidden;background:#0a0a0a}
+.clients p{font-size:.7rem;letter-spacing:3px;color:#444;text-transform:uppercase;white-space:nowrap}
+.clients-logos{display:flex;gap:48px;animation:marquee 14s linear infinite}
+.clients-logos span{font-size:.85rem;font-weight:700;color:#333;letter-spacing:2px;white-space:nowrap}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SERVICES */
+.section{padding:110px 8%}
+.sec-label{font-size:.7rem;letter-spacing:4px;color:var(--y);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sec-label::before{content:'';width:24px;height:2px;background:var(--y)}
+.sec-title{font-size:clamp(2rem,4vw,3rem);font-weight:900;margin-bottom:16px;line-height:1.1}
+.sec-sub{color:#666;font-size:.95rem;line-height:1.75;max-width:500px;margin-bottom:64px}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+
+.card{background:linear-gradient(145deg,#1c1c1c,#141414);border:1px solid #252525;padding:48px 38px;border-radius:20px;position:relative;overflow:hidden;transition:.4s;cursor:default}
+.card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 120%,rgba(245,197,24,.18) 0%,transparent 70%);opacity:0;transition:.4s}
+.card:hover::before{opacity:1}
+.card:hover{transform:translateY(-8px);border-color:rgba(245,197,24,.3);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(245,197,24,.1)}
+.card-glow{position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(245,197,24,.15),transparent 70%);pointer-events:none}
+.card-num{font-size:.65rem;letter-spacing:4px;color:rgba(245,197,24,.4);margin-bottom:28px;font-weight:700}
+
+/* 3D icons */
+.icon-3d{width:72px;height:72px;margin-bottom:28px;display:flex;align-items:center;justify-content:center;border-radius:18px;background:linear-gradient(145deg,#2a2a2a,#1a1a1a);box-shadow:4px 4px 12px rgba(0,0,0,.5),-2px -2px 8px rgba(255,255,255,.04),inset 0 1px 0 rgba(255,255,255,.06);font-size:2rem;position:relative;z-index:1;transition:.4s}
+.card:hover .icon-3d{box-shadow:4px 4px 20px rgba(245,197,24,.3),-2px -2px 8px rgba(255,255,255,.04),inset 0 1px 0 rgba(255,255,255,.06);background:linear-gradient(145deg,#2e2a1a,#1e1a0a);transform:rotate(-6deg) scale(1.08)}
+
+.card h3{font-size:1.25rem;font-weight:700;margin-bottom:14px;position:relative;z-index:1}
+.card p{color:#777;font-size:.9rem;line-height:1.7;position:relative;z-index:1}
+.card-arrow{position:absolute;bottom:36px;right:36px;width:36px;height:36px;border-radius:50%;border:1px solid #333;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:.3s;z-index:1}
+.card:hover .card-arrow{background:var(--y);border-color:var(--y);color:#111;transform:rotate(45deg)}
+
+/* CAROUSEL – WHY */
+.why{background:#080808;padding:110px 0}
+.why-inner{padding:0 8%}
+.carousel-wrap{position:relative;overflow:hidden;margin-top:0;padding:10px 0 40px}
+.carousel-track{display:flex;gap:20px;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.why-card{min-width:320px;max-width:320px;background:linear-gradient(145deg,#161616,#111);border:1px solid #222;border-radius:20px;padding:44px 36px;position:relative;overflow:hidden;flex-shrink:0;transition:.3s}
+.why-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at 50% 110%,rgba(245,197,24,.12) 0%,transparent 70%);opacity:0;transition:.4s}
+.why-card:hover::after{opacity:1}
+.why-card:hover{border-color:rgba(245,197,24,.25);transform:translateY(-4px)}
+.why-icon{font-size:1.8rem;margin-bottom:20px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#222,#181818);border-radius:14px;box-shadow:3px 3px 10px rgba(0,0,0,.5)}
+.why-card h4{font-weight:700;margin-bottom:10px;font-size:1rem}
+.why-card p{color:#666;font-size:.88rem;line-height:1.65}
+.carousel-dots{display:flex;gap:8px;margin-top:32px;padding:0 8%}
+.dot{width:28px;height:3px;background:#222;border-radius:2px;cursor:pointer;transition:.3s}
+.dot.active{background:var(--y);width:48px}
+.carousel-btns{display:flex;gap:12px;padding:0 8%;margin-top:24px}
+.cbtn{width:44px;height:44px;border-radius:50%;border:1px solid #333;background:transparent;color:#fff;font-size:1rem;cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center}
+.cbtn:hover{background:var(--y);border-color:var(--y);color:#111}
+
+/* PORTFOLIO */
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.port-item{border-radius:16px;overflow:hidden;position:relative;cursor:pointer;aspect-ratio:4/3;background:var(--g)}
+.port-item img{width:100%;height:100%;object-fit:cover;opacity:.5;transition:.5s;filter:grayscale(30%)}
+.port-item:hover img{opacity:.7;transform:scale(1.06);filter:grayscale(0%)}
+.port-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 60%);padding:24px;display:flex;flex-direction:column;justify-content:flex-end}
+.port-tag{font-size:.65rem;letter-spacing:3px;color:var(--y);text-transform:uppercase;margin-bottom:6px}
+.port-name{font-size:1rem;font-weight:700}
+.port-arrow{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.85rem;opacity:0;transition:.3s;backdrop-filter:blur(6px)}
+.port-item:hover .port-arrow{opacity:1;transform:rotate(45deg)}
+@media(max-width:640px){.portfolio-grid{grid-template-columns:1fr}}
+
+/* CTA */
+.cta-section{margin:0 4% 80px;border-radius:28px;background:linear-gradient(135deg,#1a1600,#0d0d0d 40%,#1a1200);border:1px solid rgba(245,197,24,.15);padding:100px 8%;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:500px;height:300px;background:radial-gradient(ellipse,rgba(245,197,24,.2) 0%,transparent 70%);pointer-events:none}
+.cta-section h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;margin-bottom:16px;position:relative}
+.cta-section h2 span{background:linear-gradient(90deg,var(--y),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cta-section p{color:#666;font-size:1rem;margin-bottom:44px;position:relative}
+.btn-wa{display:inline-flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--y),var(--y2));color:#111;font-weight:700;padding:18px 44px;font-size:1rem;cursor:pointer;border:none;border-radius:50px;transition:.35s;text-decoration:none;box-shadow:0 8px 32px rgba(245,197,24,.3)}
+.btn-wa:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(245,197,24,.5)}
+
+/* FOOTER */
+footer{background:#060606;padding:44px 8%;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #111;flex-wrap:wrap;gap:16px}
+footer p{color:#444;font-size:.8rem}
+
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;background:linear-gradient(135deg,#25D366,#1da851);color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 24px rgba(37,211,102,.4);text-decoration:none;transition:.3s}
+.wa-float:hover{transform:scale(1.12);box-shadow:0 8px 40px rgba(37,211,102,.5)}
+
+@media(max-width:600px){
+  nav{padding:14px 5%}.hero,.section{padding-left:5%;padding-right:5%}
+  .why-inner{padding:0 5%}.carousel-dots,.carousel-btns{padding:0 5%}
+  .cta-section{margin:0 3% 60px;padding:70px 6%}.footer{padding:32px 5%}
+  .stats{gap:28px}.portfolio-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">BALDI<span>.</span></div>
+  <a class="nav-btn" href="https://wa.me/5518999999999" target="_blank">Falar no WhatsApp</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Design que transforma negócios</div>
+    <h1>Criamos marcas que<br/><em>deixam sua marca.</em></h1>
+    <p>Sites, Branding e Eventos com identidade visual forte, estratégica e que converte visitantes em clientes.</p>
+    <div class="cta-group">
+      <a class="btn-primary" href="https://wa.me/5518999999999" target="_blank">💬 Solicitar orçamento</a>
+      <a class="btn-outline" href="#servicos">Ver serviços</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><h2>+50</h2><p>Projetos entregues</p></div>
+      <div class="stat"><h2>+30</h2><p>Clientes satisfeitos</p></div>
+      <div class="stat"><h2>3</h2><p>Anos de experiência</p></div>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL <span></span></div>
+</section>
+
+<!-- CLIENTS -->
+<div class="clients">
+  <p>Parceiros</p>
+  <div class="clients-logos">
+    <span>ADOBE</span><span>FIGMA</span><span>SHOPIFY</span><span>WORDPRESS</span><span>WEBFLOW</span><span>NOTION</span>
+    <span>ADOBE</span><span>FIGMA</span><span>SHOPIFY</span><span>WORDPRESS</span><span>WEBFLOW</span><span>NOTION</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="servicos">
+  <div class="sec-label">O que fazemos</div>
+  <h2 class="sec-title">Serviços que<br/>elevam sua marca</h2>
+  <p class="sec-sub">Soluções criativas e estratégicas para posicionar sua marca onde ela merece estar.</p>
+  <div class="services-grid">
+    <div class="card">
+      <div class="card-glow"></div>
+      <div class="card-num">01 — SITES</div>
+      <div class="icon-3d">🌐</div>
+      <h3>Criação de Sites</h3>
+      <p>Sites modernos, responsivos e otimizados para converter visitantes em clientes reais. Do portfólio à loja virtual.</p>
+      <div class="card-arrow">↗</div>
+    </div>
+    <div class="card">
+      <div class="card-glow"></div>
+      <div class="card-num">02 — BRANDING</div>
+      <div class="icon-3d">✦</div>
+      <h3>Branding</h3>
+      <p>Identidade visual completa: logo, paleta, tipografia e manual de marca para você dominar o mercado.</p>
+      <div class="card-arrow">↗</div>
+    </div>
+    <div class="card">
+      <div class="card-glow"></div>
+      <div class="card-num">03 — EVENTOS</div>
+      <div class="icon-3d">🎪</div>
+      <h3>Eventos</h3>
+      <p>Identidade visual e materiais para eventos corporativos, lançamentos e experiências que marcam.</p>
+      <div class="card-arrow">↗</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CAROUSEL -->
+<section class="why" id="sobre">
+  <div class="why-inner">
+    <div class="sec-label">Por que a Baldi?</div>
+    <h2 class="sec-title">Diferenciais que<br/>fazem a diferença</h2>
+    <p class="sec-sub">Mais do que design bonito — entregamos estratégia, resultado e parceria real.</p>
+  </div>
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="track">
+      <div class="why-card"><div class="why-icon">🎯</div><h4>Atendimento Personalizado</h4><p>Cada projeto é único. Ouvimos suas necessidades e criamos soluções sob medida.</p></div>
+      <div class="why-card"><div class="why-icon">⏱️</div><h4>Prazo Garantido</h4><p>Comprometidos com prazos. Você recebe o projeto no tempo combinado, sem surpresas.</p></div>
+      <div class="why-card"><div class="why-icon">🧠</div><h4>Design Estratégico</h4><p>Unimos estética e estratégia. Cada escolha visual é pensada para comunicar e converter.</p></div>
+      <div class="why-card"><div class="why-icon">🔧</div><h4>Suporte Contínuo</h4><p>Nossa parceria não termina na entrega. Disponíveis para ajustes e evoluções.</p></div>
+      <div class="why-card"><div class="why-icon">💡</div><h4>Criatividade Sem Limites</h4><p>Pensamos fora da caixa para entregar soluções visuais que surpreendem e engajam.</p></div>
+      <div class="why-card"><div class="why-icon">📈</div><h4>Foco em Resultados</h4><p>Cada projeto é medido por impacto real no seu negócio, não apenas pela estética.</p></div>
+    </div>
+  </div>
+  <div class="carousel-dots" id="dots"></div>
+  <div class="carousel-btns">
+    <button class="cbtn" id="prev">←</button>
+    <button class="cbtn" id="next">→</button>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section" id="portfolio">
+  <div class="sec-label">Portfólio</div>
+  <h2 class="sec-title">Alguns projetos</h2>
+  <p class="sec-sub">Uma amostra do que já criamos. Cada projeto conta uma história.</p>
+  <div class="portfolio-grid">
+    <div class="port-item">
+      <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Site"/>
+      <div class="port-overlay"><div class="port-tag">Site</div><div class="port-name">E-commerce de Moda</div></div>
+      <div class="port-arrow">↗</div>
+    </div>
+    <div class="port-item">
+      <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80" alt="Branding"/>
+      <div class="port-overlay"><div class="port-tag">Branding</div><div class="port-name">Identidade para Startup</div></div>
+      <div class="port-arrow">↗</div>
+    </div>
+    <div class="port-item">
+      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="Evento"/>
+      <div class="port-overlay"><div class="port-tag">Evento</div><div class="port-name">Congresso Empresarial</div></div>
+      <div class="port-arrow">↗</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Pronto para transformar<br/><span>sua marca?</span></h2>
+  <p>Entre em contato agora e receba um orçamento personalizado e sem compromisso.</p>
+  <a class="btn-wa" href="https://wa.me/5518999999999" target="_blank">💬 Falar no WhatsApp agora</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo" style="font-size:1.1rem">BALDI<span style="color:var(--y)">.</span></div>
+  <p>© 2026 Baldi Design. Todos os direitos reservados.</p>
+  <p style="color:#2a2a2a">Sites · Branding · Eventos</p>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5518999999999" target="_blank" title="WhatsApp">💬</a>
+
+<script>
+const track = document.getElementById('track');
+const dotsEl = document.getElementById('dots');
+const cards = track.querySelectorAll('.why-card');
+const visible = () => window.innerWidth < 640 ? 1 : window.innerWidth < 900 ? 2 : 3;
+let cur = 0;
+const total = () => Math.ceil(cards.length / visible());
+
+function buildDots(){
+  dotsEl.innerHTML='';
+  for(let i=0;i<total();i++){
+    const d=document.createElement('div');
+    d.className='dot'+(i===cur?' active':'');
+    d.onclick=()=>go(i);
+    dotsEl.appendChild(d);
+  }
+}
+function go(i){
+  cur=Math.max(0,Math.min(i,total()-1));
+  const w=cards[0].offsetWidth+20;
+  track.style.transform=`translateX(-${cur*visible()*w}px)`;
+  buildDots();
+}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+
+// init carousel left padding
+track.style.paddingLeft='8%';
+buildDots();
+window.addEventListener('resize',()=>go(0));
+
+// touch swipe
+let tx=0;
+track.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+track.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].clientX;
+  if(Math.abs(dx)>50) dx>0?go(cur+1):go(cur-1);
+},{passive:true});
+</script>
+</body>
+</html>
