@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Contato – Baldi Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--y:#F5C518;--y2:#e6a800;--b:#0d0d0d;--g:#1a1a1a}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--b);color:#fff;min-height:100vh}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:99;display:flex;justify-content:space-between;align-items:center;padding:18px 8%;background:rgba(13,13,13,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(245,197,24,.08)}
+.logo{font-size:1.3rem;font-weight:900;letter-spacing:3px;color:#fff;text-decoration:none}.logo span{color:var(--y)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{color:#888;font-size:.85rem;text-decoration:none;letter-spacing:.5px;transition:.2s}
+.nav-links a:hover{color:#fff}
+.nav-links a.active{color:var(--y)}
+.nav-btn{background:var(--y);color:#111;font-weight:700;padding:11px 26px;border:none;cursor:pointer;font-size:.85rem;letter-spacing:1px;border-radius:50px;transition:.3s;text-decoration:none}
+.nav-btn:hover{background:#fff;color:#111;box-shadow:0 0 24px rgba(245,197,24,.5);transform:translateY(-2px)}
+
+/* HERO MINI */
+.page-hero{padding:160px 8% 80px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(245,197,24,.12),transparent 70%);pointer-events:none}
+.sec-label{font-size:.7rem;letter-spacing:4px;color:var(--y);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sec-label::before{content:'';width:24px;height:2px;background:var(--y)}
+.page-hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:900;line-height:1.05;margin-bottom:16px}
+.page-hero h1 span{background:linear-gradient(90deg,var(--y),#fff 70%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-hero p{color:#666;font-size:1rem;max-width:460px;line-height:1.75}
+
+/* CONTACT LAYOUT */
+.contact-wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:60px;padding:0 8% 120px;align-items:start}
+
+/* INFO */
+.contact-info{display:flex;flex-direction:column;gap:32px}
+.info-card{background:linear-gradient(145deg,#161616,#111);border:1px solid #222;border-radius:20px;padding:32px;display:flex;gap:18px;align-items:flex-start;transition:.3s}
+.info-card:hover{border-color:rgba(245,197,24,.25);transform:translateY(-3px)}
+.info-icon{width:48px;height:48px;min-width:48px;border-radius:14px;background:linear-gradient(145deg,#222,#181818);box-shadow:3px 3px 10px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.info-card h4{font-size:.8rem;letter-spacing:2px;color:var(--y);text-transform:uppercase;margin-bottom:6px}
+.info-card p{color:#888;font-size:.9rem;line-height:1.6}
+
+/* FORM */
+.form-wrap{background:linear-gradient(145deg,#161616,#111);border:1px solid #222;border-radius:24px;padding:52px 44px;position:relative;overflow:hidden}
+.form-wrap::before{content:'';position:absolute;bottom:-60px;right:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(245,197,24,.08),transparent 70%);pointer-events:none}
+.form-wrap h2{font-size:1.5rem;font-weight:700;margin-bottom:8px}
+.form-wrap p{color:#666;font-size:.9rem;margin-bottom:36px}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.field label{font-size:.75rem;letter-spacing:2px;color:#666;text-transform:uppercase}
+.field input,.field textarea{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:12px;padding:16px 18px;color:#fff;font-family:'Inter',sans-serif;font-size:.95rem;outline:none;transition:.3s;resize:none}
+.field input:focus,.field textarea:focus{border-color:rgba(245,197,24,.4);box-shadow:0 0 0 3px rgba(245,197,24,.06)}
+.field input::placeholder,.field textarea::placeholder{color:#444}
+.field textarea{min-height:140px}
+
+.btn-submit{width:100%;background:linear-gradient(135deg,var(--y),var(--y2));color:#111;font-weight:700;padding:18px;font-size:1rem;cursor:pointer;border:none;border-radius:50px;transition:.35s;letter-spacing:.5px;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn-submit:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(245,197,24,.4)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+/* SUCCESS */
+.success-msg{display:none;text-align:center;padding:40px 20px}
+.success-msg .check{font-size:3rem;margin-bottom:16px}
+.success-msg h3{font-size:1.3rem;font-weight:700;margin-bottom:10px}
+.success-msg p{color:#666;font-size:.9rem}
+
+/* FOOTER */
+footer{background:#060606;padding:44px 8%;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #111;flex-wrap:wrap;gap:16px}
+footer p{color:#444;font-size:.8rem}
+
+/* WA */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;background:linear-gradient(135deg,#25D366,#1da851);color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 24px rgba(37,211,102,.4);text-decoration:none;transition:.3s}
+.wa-float:hover{transform:scale(1.12)}
+
+@media(max-width:860px){
+  .contact-wrap{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  nav .nav-links{display:none}
+  .form-wrap{padding:36px 28px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">BALDI<span>.</span></a>
+  <div class="nav-links">
+    <a href="index.html">Início</a>
+    <a href="index.html#servicos">Serviços</a>
+    <a href="index.html#portfolio">Portfólio</a>
+    <a href="contato.html" class="active">Contato</a>
+  </div>
+  <a class="nav-btn" href="https://wa.me/5518999999999" target="_blank">WhatsApp</a>
+</nav>
+
+<div class="page-hero">
+  <div class="sec-label">Fale conosco</div>
+  <h1>Vamos criar algo<br/><span>incrível juntos?</span></h1>
+  <p>Preencha o formulário e entraremos em contato em até 24 horas com uma proposta personalizada.</p>
+</div>
+
+<div class="contact-wrap">
+  <!-- INFO -->
+  <div class="contact-info">
+    <div class="info-card">
+      <div class="info-icon">📍</div>
+      <div>
+        <h4>Localização</h4>
+        <p>Birigui, São Paulo — Brasil<br/>Atendimento remoto para todo o país</p>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">📧</div>
+      <div>
+        <h4>E-mail</h4>
+        <p>contato@baldidesign.com.br</p>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">💬</div>
+      <div>
+        <h4>WhatsApp</h4>
+        <p>Resposta rápida pelo WhatsApp<br/>para orçamentos e dúvidas</p>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">⏱️</div>
+      <div>
+        <h4>Tempo de resposta</h4>
+        <p>Respondemos em até 24h úteis após o recebimento da mensagem</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-wrap">
+    <div id="formContent">
+      <h2>Envie uma mensagem</h2>
+      <p>Conta pra gente o que você precisa e vamos montar a melhor solução.</p>
+
+      <form action="https://formspree.io/f/xjgjadly" method="POST" id="contactForm">
+        <div class="form-row">
+          <div class="field">
+            <label>Nome</label>
+            <input type="text" name="nome" placeholder="Seu nome completo" required/>
+          </div>
+          <div class="field">
+            <label>Telefone</label>
+            <input type="tel" name="telefone" placeholder="(00) 00000-0000"/>
+          </div>
+        </div>
+        <div class="field">
+          <label>E-mail</label>
+          <input type="email" name="email" placeholder="seu@email.com" required/>
+        </div>
+        <div class="field">
+          <label>Mensagem</label>
+          <textarea name="message" placeholder="Conte sobre seu projeto, o que precisa, prazo, etc..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <span>✉️</span> Enviar mensagem
+        </button>
+      </form>
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      <div class="check">✅</div>
+      <h3>Mensagem enviada!</h3>
+      <p>Recebemos seu contato e responderemos em até 24 horas. Obrigado!</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a class="logo" href="index.html" style="font-size:1.1rem;text-decoration:none">BALDI<span style="color:var(--y)">.</span></a>
+  <p>© 2026 Baldi Design. Todos os direitos reservados.</p>
+  <p style="color:#2a2a2a">Sites · Branding · Eventos</p>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5518999999999" target="_blank">💬</a>
+
+<script>
+const form = document.getElementById('contactForm');
+const btn = document.getElementById('submitBtn');
+const formContent = document.getElementById('formContent');
+const successMsg = document.getElementById('successMsg');
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  btn.disabled = true;
+  btn.innerHTML = '<span>⏳</span> Enviando...';
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if(res.ok){
+      formContent.style.display = 'none';
+      successMsg.style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = '<span>✉️</span> Enviar mensagem';
+      alert('Erro ao enviar. Tente novamente.');
+    }
+  } catch {
+    btn.disabled = false;
+    btn.innerHTML = '<span>✉️</span> Enviar mensagem';
+    alert('Erro ao enviar. Tente novamente.');
+  }
+});
+</script>
+</body>
+</html>
